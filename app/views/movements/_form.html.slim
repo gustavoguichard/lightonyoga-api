@@ -1,0 +1,19 @@
+= form_for @movement do |f|
+  - if @movement.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@movement.errors.count, "error")} prohibited this movement from being saved:"
+      ul
+        - @movement.errors.full_messages.each do |message|
+          li = message
+
+  p.flex.flex-col
+    = f.label :name, "Nome"
+    = f.text_field :name
+  p.flex.flex-col
+    = f.label :joint, "Articulação"
+    = f.text_field :joint
+  p.flex.flex-col
+    = f.label :content, 'Conteúdo'
+    = f.rich_text_area :content
+
+  .actions = f.submit 'Salvar'

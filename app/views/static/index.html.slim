@@ -1,3 +1,9 @@
 header
-  h1 Static#index
-  p Find me in app/views/static/index.html.slim
+  h1 Admin
+
+h3 Conteúdos para edição
+ul.list-disc
+  li= link_to 'Tags', tags_path
+  li= link_to 'Famílias dos Asanas', families_path
+  li= link_to 'Movimentos articulares', movements_path
+  li= link_to 'Glossário', words_path

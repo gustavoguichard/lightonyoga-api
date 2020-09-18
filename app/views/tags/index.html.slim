@@ -1,0 +1,17 @@
+header
+  h1 Tagas as Tags
+
+.text-right.mb-2
+  = link_to 'Nova Tag', new_tag_path
+
+table
+  thead
+    tr
+      th Tag
+      th.w-20
+
+  tbody
+    - @tags.each do |tag|
+      tr
+        td = link_to "#{tag.name} - #{tag.category}", edit_tag_path(tag)
+        td.text-center = link_to 'Excluir', tag, data: { confirm: 'Tem certeza?' }, method: :delete

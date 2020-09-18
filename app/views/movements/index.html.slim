@@ -1,0 +1,17 @@
+header
+  h1 Todos movimentos
+
+.text-right.mb-2
+  = link_to 'Novo Movimento', new_movement_path
+
+table
+  thead
+    tr
+      th Movimento
+      th.w-20
+
+  tbody
+    - @movements.each do |movement|
+      tr
+        td = link_to "#{movement.name} - #{movement.joint}", edit_movement_path(movement)
+        td.text-center = link_to 'Excluir', movement, data: { confirm: 'Tem certeza?' }, method: :delete

@@ -10,10 +10,10 @@
     = f.label :name, "Nome"
     = f.text_field :name
   p.flex.flex-col
-    = f.label :name, "Tradução"
+    = f.label :translation, "Tradução"
     = f.text_field :translation
   p.flex.flex-col
-    = f.label :content
+    = f.label :content, 'Conteúdo'
     = f.rich_text_area :content
 
   .actions = f.submit 'Salvar'

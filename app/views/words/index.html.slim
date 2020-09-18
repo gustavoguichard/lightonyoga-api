@@ -1,0 +1,17 @@
+header
+  h1 Todas palavras
+
+.text-right.mb-2
+  = link_to 'Nova palavra', new_word_path
+
+table
+  thead
+    tr
+      th Palavra
+      th.w-20
+
+  tbody
+    - @words.each do |word|
+      tr
+        td = link_to "#{word.name} - #{word.translation}", edit_word_path(word)
+        td.text-center = link_to 'Excluir', word, data: { confirm: 'Tem certeza?' }, method: :delete

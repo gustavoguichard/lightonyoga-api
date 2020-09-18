@@ -1,18 +1,18 @@
-h1 Todas familias
+header
+  h1 Todas familias
+
+.text-right.mb-2
+  = link_to 'Nova Familia', new_family_path
 
 table
   thead
     tr
       th
-        'Editar
-      th
+        | Família
+      th.w-20
 
   tbody
     - @families.each do |family|
       tr
         td = link_to family.name, edit_family_path(family)
-        td = link_to 'Excluir', family, data: { confirm: 'Tem certeza?' }, method: :delete
-
-br
-
-= link_to 'Nova Familia', new_family_path
+        td.text-center = link_to 'Excluir', family, data: { confirm: 'Tem certeza?' }, method: :delete

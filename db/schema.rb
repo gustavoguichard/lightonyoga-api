@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 2020_09_18_011841) do
     t.string "name", null: false
     t.string "slug", null: false
     t.string "translation", null: false
-    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -59,7 +58,6 @@ ActiveRecord::Schema.define(version: 2020_09_18_011841) do
     t.string "name", null: false
     t.string "slug", null: false
     t.string "joint", null: false
-    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -69,7 +67,6 @@ ActiveRecord::Schema.define(version: 2020_09_18_011841) do
     t.string "slug", null: false
     t.integer "category", null: false
     t.boolean "premium", default: false, null: false
-    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
