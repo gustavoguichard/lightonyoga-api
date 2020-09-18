@@ -1,0 +1,18 @@
+h1 Todas familias
+
+table
+  thead
+    tr
+      th
+        'Editar
+      th
+
+  tbody
+    - @families.each do |family|
+      tr
+        td = link_to family.name, edit_family_path(family)
+        td = link_to 'Excluir', family, data: { confirm: 'Tem certeza?' }, method: :delete
+
+br
+
+= link_to 'Nova Familia', new_family_path
