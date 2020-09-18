@@ -1,0 +1,17 @@
+header
+  h1 Todos Asanas
+
+.text-right.mb-2
+  = link_to 'Novo Asana', new_asana_path
+
+table
+  thead
+    tr
+      th Nome
+      th.w-20
+
+  tbody
+    - @asanas.each do |asana|
+      tr
+        td = link_to "#{asana.name} - #{asana.family.name}", edit_asana_path(asana)
+        td = link_to 'Excluir', asana, data: { confirm: 'Tem certeza?' }, method: :delete

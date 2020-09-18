@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_18_011841) do
+ActiveRecord::Schema.define(version: 2020_09_18_025806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,22 @@ ActiveRecord::Schema.define(version: 2020_09_18_011841) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "asanas", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slug", null: false
+    t.string "translation"
+    t.bigint "family_id", null: false
+    t.text "advanced_actions"
+    t.text "connections"
+    t.text "observe"
+    t.text "benefits"
+    t.text "caution"
+    t.text "contraindications"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["family_id"], name: "index_asanas_on_family_id"
   end
 
   create_table "families", force: :cascade do |t|
@@ -80,4 +96,5 @@ ActiveRecord::Schema.define(version: 2020_09_18_011841) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "asanas", "families"
 end

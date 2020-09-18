@@ -11,7 +11,7 @@
     = f.text_field :name
   p.flex.flex-col
     = f.label :category, "Categoria"
-    = f.select :category, collection: Tag.categories.keys.to_a
+    = f.select :category, Tag.categories.keys.to_a
   p.flex.flex-col
     = f.label :content, 'Conteúdo'
     = f.rich_text_area :content

@@ -1,0 +1,36 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @asana.name
+p
+  strong Slug:
+  = @asana.slug
+p
+  strong Translation:
+  = @asana.translation
+p
+  strong Family:
+  = @asana.family
+p
+  strong Advanced actions:
+  = @asana.advanced_actions
+p
+  strong Connections:
+  = @asana.connections
+p
+  strong Observe:
+  = @asana.observe
+p
+  strong Benefits:
+  = @asana.benefits
+p
+  strong Caution:
+  = @asana.caution
+p
+  strong Contraindications:
+  = @asana.contraindications
+
+=> link_to 'Edit', edit_asana_path(@asana)
+'|
+=< link_to 'Back', asanas_path

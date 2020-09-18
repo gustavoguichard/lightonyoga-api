@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :asanas
   root to: 'static#index'
   resources :families
   resources :words
