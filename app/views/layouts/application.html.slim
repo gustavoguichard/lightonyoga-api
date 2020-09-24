@@ -8,5 +8,11 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  body
-    = yield
+  body.flex.flex-col.min-h-screen
+    .flex.flex-col.flex-grow
+      = yield
+    footer.flex.justify-center
+      p.mb-0.mt-4
+        = link_to 'Admin', root_path
+        |  &middot; Light on Yoga App &middot; &copy;&nbsp;
+        = Date.today.year

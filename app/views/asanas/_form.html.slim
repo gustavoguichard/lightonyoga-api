@@ -13,8 +13,8 @@
     = f.label :translation, 'Nome traduzido'
     = f.text_field :translation
   .field.w-full.flex.flex-col
-    = f.label :family, 'Família'
-    = f.collection_select :family, Family.all, :id, :name
+    = f.label :family_id, 'Família'
+    = f.collection_select :family_id, Family.all, :id, :name
   .field.w-full.flex.flex-col
     = f.label :content, 'Texto de introdução'
     = f.rich_text_area :content

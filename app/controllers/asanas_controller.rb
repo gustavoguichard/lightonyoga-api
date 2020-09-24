@@ -6,7 +6,7 @@ class AsanasController < ApplicationController
   # GET /asanas
   # GET /asanas.json
   def index
-    @asanas = Asana.all
+    @asanas = Asana.order(:family_id, :name)
   end
 
   # GET /asanas/1
@@ -28,7 +28,7 @@ class AsanasController < ApplicationController
 
     respond_to do |format|
       if @asana.save
-        format.html { redirect_to @asana, notice: 'Asana was successfully created.' }
+        format.html { redirect_to asanas_path, notice: 'Asana was successfully created.' }
         format.json { render :show, status: :created, location: @asana }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class AsanasController < ApplicationController
   def update
     respond_to do |format|
       if @asana.update(asana_params)
-        format.html { redirect_to @asana, notice: 'Asana was successfully updated.' }
+        format.html { redirect_to asanas_path, notice: 'Asana was successfully updated.' }
         format.json { render :show, status: :ok, location: @asana }
       else
         format.html { render :edit }
@@ -70,6 +70,28 @@ class AsanasController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def asana_params
-    params.require(:asana).permit(:name, :slug, :translation, :family, :advanced_actions, :connections, :observe, :benefits, :caution, :contraindications)
+    params.require(:asana).permit(
+      :name,
+      :slug,
+      :translation,
+      :family_id,
+      :advanced_actions,
+      :connections,
+      :observe,
+      :benefits,
+      :caution,
+      :contraindications,
+      :content,
+      :setup,
+      :entering,
+      :legs,
+      :core,
+      :trunk,
+      :arms,
+      :head,
+      :all,
+      :leaving,
+      :curiosities
+    )
   end
 end
