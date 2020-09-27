@@ -12,4 +12,5 @@ class Tag < ApplicationRecord
   has_many :variations, through: :taggings, source: :taggable, source_type: 'Variation'
 
   validates :name, presence: true
+  validates :category, presence: true
 end

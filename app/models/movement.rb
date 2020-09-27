@@ -6,4 +6,7 @@ class Movement < ApplicationRecord
   has_and_belongs_to_many :asanas
 
   has_rich_text :content
+
+  validates :name, presence: true
+  validates :joint, presence: true
 end
