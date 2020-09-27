@@ -6,9 +6,10 @@
         - @asana.errors.full_messages.each do |message|
           li = message
 
-  .field.w-full.flex.flex-col
-    = f.label :name, 'Nome'
-    = f.text_field :name
+  = f.fields_for :exercise do |ff|
+    .field.w-full.flex.flex-col
+      = ff.label :name, 'Nome'
+      = ff.text_field :name
   .field.w-full.flex.flex-col
     = f.label :translation, 'Nome traduzido'
     = f.text_field :translation

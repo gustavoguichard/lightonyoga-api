@@ -6,7 +6,7 @@ class AsanasController < ApplicationController
   # GET /asanas
   # GET /asanas.json
   def index
-    @asanas = Asana.order(:family_id, :name)
+    @asanas = Asana.joins(:exercise).merge(Exercise.order(:name)).order(:family_id)
   end
 
   # GET /asanas/1
@@ -15,7 +15,9 @@ class AsanasController < ApplicationController
 
   # GET /asanas/new
   def new
-    @asana = Asana.new
+    @asana = Asana.new do |asana|
+      asana.exercise = Exercise.new
+    end
   end
 
   # GET /asanas/1/edit
@@ -71,8 +73,6 @@ class AsanasController < ApplicationController
   # Only allow a list of trusted parameters through.
   def asana_params
     params.require(:asana).permit(
-      :name,
-      :slug,
       :translation,
       :family_id,
       :advanced_actions,
@@ -91,7 +91,8 @@ class AsanasController < ApplicationController
       :head,
       :all,
       :leaving,
-      :curiosities
+      :curiosities,
+      exercise_attributes: %i[id name]
     )
   end
 end

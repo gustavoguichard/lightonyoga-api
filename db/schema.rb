@@ -47,8 +47,6 @@ ActiveRecord::Schema.define(version: 2020_09_18_025806) do
   end
 
   create_table "asanas", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "slug", null: false
     t.string "translation"
     t.bigint "family_id", null: false
     t.text "advanced_actions"
@@ -60,6 +58,16 @@ ActiveRecord::Schema.define(version: 2020_09_18_025806) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["family_id"], name: "index_asanas_on_family_id"
+  end
+
+  create_table "exercises", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.string "content_type"
+    t.bigint "content_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["content_type", "content_id"], name: "index_exercises_on_content_type_and_content_id"
   end
 
   create_table "families", force: :cascade do |t|
