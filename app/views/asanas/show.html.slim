@@ -15,6 +15,10 @@ p#notice = notice
     br
     strong.sm:mr-2 Família:
     = @asana.family.name
+    - if @asana.words.any?
+      br
+      strong.sm:mr-2 Tradução:
+      = @asana.words.map{|w| "#{w.name} = #{w.translation}" }.join(', ')
     - if @asana.movements.any?
       br
       strong.sm:mr-2 Principais movimentos articulares:

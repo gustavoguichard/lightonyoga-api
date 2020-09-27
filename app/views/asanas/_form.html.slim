@@ -9,6 +9,7 @@
     = ff.text_field :image, label: 'Link para imagem de destaque'
   = f.rich_text_area :content, label: 'Texto de introdução'
 
+  = f.collection_select :word_ids, Word.order(:name), :id, :name, {}, label: 'Palavras em Sânscrito', multiple: true, data: { choices: true }
   = f.collection_select :movement_ids, Movement.order(:name), :id, :name, {}, label: 'Principais movimentos articulares', multiple: true, data: { choices: true }
 
   h3.mt-8 Ações

@@ -94,6 +94,7 @@ class AsanasController < ApplicationController
       :curiosities,
       exercise_attributes: %i[id name image],
       movement_ids: [],
+      word_ids: [],
     )
   end
 end

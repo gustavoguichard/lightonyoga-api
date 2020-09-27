@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_27_220149) do
+ActiveRecord::Schema.define(version: 2020_09_27_221828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,13 @@ ActiveRecord::Schema.define(version: 2020_09_27_220149) do
     t.bigint "movement_id", null: false
     t.index ["asana_id"], name: "index_asanas_movements_on_asana_id"
     t.index ["movement_id"], name: "index_asanas_movements_on_movement_id"
+  end
+
+  create_table "asanas_words", force: :cascade do |t|
+    t.bigint "asana_id", null: false
+    t.bigint "word_id", null: false
+    t.index ["asana_id"], name: "index_asanas_words_on_asana_id"
+    t.index ["word_id"], name: "index_asanas_words_on_word_id"
   end
 
   create_table "exercises", force: :cascade do |t|
@@ -131,6 +138,8 @@ ActiveRecord::Schema.define(version: 2020_09_27_220149) do
   add_foreign_key "asanas", "families"
   add_foreign_key "asanas_movements", "asanas"
   add_foreign_key "asanas_movements", "movements"
+  add_foreign_key "asanas_words", "asanas"
+  add_foreign_key "asanas_words", "words"
   add_foreign_key "taggings", "tags"
   add_foreign_key "variations", "asanas"
 end
