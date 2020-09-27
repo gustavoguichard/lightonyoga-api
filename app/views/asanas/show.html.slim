@@ -6,13 +6,15 @@ header
 
 p#notice = notice
 
-p
-  strong.mr-2 Link:
-  = link_to @asana.slug, "https://lightonyoga.com.br/asana/#{@asana.slug}"
-  br
-  strong.mr-2 Família:
-  = @asana.family.name
-
+.flex
+  - if @asana.image
+    = image_tag @asana.image, width: 200, class: 'mr-4'
+  div
+    strong.mr-2 Link:
+    = link_to @asana.slug, "https://lightonyoga.com.br/asana/#{@asana.slug}"
+    br
+    strong.mr-2 Família:
+    = @asana.family.name
 
 = rich_content "Introdução", @asana.content
 

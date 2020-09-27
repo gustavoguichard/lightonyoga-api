@@ -5,6 +5,8 @@
     = ff.text_field :name, label: 'Nome'
   = f.text_field :translation, label: 'Nome traduzido'
   = f.collection_select :family_id, Family.all, :id, :name, label: 'Família'
+  = f.fields_for :exercise do |ff|
+    = ff.text_field :image, label: 'Link para imagem de destaque'
   = f.rich_text_area :content, label: 'Texto de introdução'
 
   h3.mt-8 Ações

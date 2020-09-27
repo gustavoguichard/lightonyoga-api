@@ -2,10 +2,10 @@
 
 class Asana < ApplicationRecord
   include Taggable
+  include Exercisable
 
   belongs_to :family
 
-  has_one :exercise, as: :content, dependent: :destroy
   has_many :variations, dependent: :destroy
 
   has_rich_text :content
@@ -19,9 +19,4 @@ class Asana < ApplicationRecord
   has_rich_text :all
   has_rich_text :leaving
   has_rich_text :curiosities
-
-  delegate :name, to: :exercise
-  delegate :slug, to: :exercise
-
-  accepts_nested_attributes_for :exercise
 end

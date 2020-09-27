@@ -76,7 +76,7 @@ class VariationsController < ApplicationController
       :tagline,
       :content,
       :asana_id,
-      exercise_attributes: %i[id name],
+      exercise_attributes: %i[id name image],
       tag_ids: [],
     )
   end

@@ -9,6 +9,8 @@ article
     - @variation.tags.each do |tag|
       span.mr-1.mb-2.py-1.px-2.text-sm.bg-blue-600.rounded.text-white
         = tag.name
+  - if @variation.image
+    = image_tag @variation.image, width: 200, class: 'mr-4'
   h3 Chamada
   p.text-lg = @variation.tagline
   = rich_content "Instruções", @variation.content

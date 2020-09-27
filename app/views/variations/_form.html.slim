@@ -4,6 +4,7 @@
   = f.collection_select :tag_ids, Tag.all, :id, :name, {}, label: 'Tags', multiple: true, data: { choices: true }
   = f.fields_for :exercise do |ff|
     = ff.text_field :name, label: 'Título', value: @variation.name
+    = ff.text_field :image, label: 'Link para imagem de destaque'
   = f.collection_select :asana_id, Asana.all, :id, :name, label: 'Asana original'
   = f.text_area :tagline, label: 'Descrição curta'
   = f.rich_text_area :content, label: 'Conteúdo'
