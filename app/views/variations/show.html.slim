@@ -5,6 +5,10 @@ header
     small.text-gray-600 = @variation.name
 
 article
+  .flex
+    - @variation.tags.each do |tag|
+      span.mr-1.mb-2.py-1.px-2.text-sm.bg-blue-600.rounded.text-white
+        = tag.name
   h3 Chamada
   p.text-lg = @variation.tagline
   = rich_content "Instruções", @variation.content

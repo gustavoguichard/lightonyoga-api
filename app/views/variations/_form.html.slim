@@ -20,4 +20,11 @@
     = f.label :content, 'Conteúdo'
     = f.rich_text_area :content
 
+  = hidden_field_tag "variation[tag_ids][]", nil
+  - Tag.all.each do |tag|
+    .field.w-full.flex.items-baseline
+      = check_box_tag "variation[tag_ids][]", tag.id, @variation.tag_ids.include?(tag.id), id: dom_id(tag)
+      |  &nbsp;
+      = label_tag dom_id(tag), tag.name, class: "cursor-pointer"
+
   .actions.mt-4 = f.submit 'Salvar'
