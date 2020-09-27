@@ -7,6 +7,7 @@ class Asana < ApplicationRecord
   belongs_to :family
 
   has_many :variations, dependent: :destroy
+  has_and_belongs_to_many :movements
 
   has_rich_text :content
   has_rich_text :setup

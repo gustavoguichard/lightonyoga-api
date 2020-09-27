@@ -6,15 +6,19 @@ header
 
 p#notice = notice
 
-.flex
+.sm:flex.flex-col.sm:flex-row
   - if @asana.image
     = image_tag @asana.image, width: 200, class: 'mr-4'
   div
-    strong.mr-2 Link:
+    strong.sm:mr-2 Link:
     = link_to @asana.slug, "https://lightonyoga.com.br/asana/#{@asana.slug}"
     br
-    strong.mr-2 Família:
+    strong.sm:mr-2 Família:
     = @asana.family.name
+    - if @asana.movements.any?
+      br
+      strong.sm:mr-2 Principais movimentos articulares:
+      = @asana.movements.pluck(:name).join(', ')
 
 = rich_content "Introdução", @asana.content
 
