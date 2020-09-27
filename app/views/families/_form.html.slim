@@ -1,19 +1,8 @@
-= form_for @family do |f|
-  - if @family.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@family.errors.count, "error")} prohibited this family from being saved:"
-      ul
-        - @family.errors.full_messages.each do |message|
-          li = message
+= form_for @family, builder: CustomFormBuilder do |f|
+  = f.error_messages
 
-  p.flex.flex-col
-    = f.label :name, "Nome"
-    = f.text_field :name
-  p.flex.flex-col
-    = f.label :translation, "Tradução"
-    = f.text_field :translation
-  p.flex.flex-col
-    = f.label :content, 'Conteúdo'
-    = f.rich_text_area :content
+  = f.text_field :name, label: 'Nome'
+  = f.text_field :translation, label: 'Tradução'
+  = f.rich_text_area :content, label: 'Conteúdo'
 
-  .actions = f.submit 'Salvar'
+  = f.submit

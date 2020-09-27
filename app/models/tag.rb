@@ -10,4 +10,6 @@ class Tag < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :asanas, through: :taggings, source: :taggable, source_type: 'Asana'
   has_many :variations, through: :taggings, source: :taggable, source_type: 'Variation'
+
+  validates :name, presence: true
 end

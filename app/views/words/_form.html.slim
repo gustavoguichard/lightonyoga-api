@@ -1,16 +1,6 @@
-= form_for @word do |f|
-  - if @word.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@word.errors.count, "error")} prohibited this word from being saved:"
-      ul
-        - @word.errors.full_messages.each do |message|
-          li = message
+= form_for @word, builder: CustomFormBuilder do |f|
+  = f.error_messages
 
-  p.flex.flex-col
-    = f.label :name, "Nome"
-    = f.text_field :name
-  p.flex.flex-col
-    = f.label :translation, "Tradução"
-    = f.text_field :translation
-
-  .actions = f.submit 'Salvar'
+  = f.text_field :name, label: 'Nome'
+  = f.text_field :translation, label: 'Tradução'
+  = f.submit

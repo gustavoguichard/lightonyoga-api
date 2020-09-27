@@ -1,19 +1,7 @@
-= form_for @tag do |f|
-  - if @tag.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@tag.errors.count, "error")} prohibited this tag from being saved:"
-      ul
-        - @tag.errors.full_messages.each do |message|
-          li = message
+= form_for @tag, builder: CustomFormBuilder do |f|
+  = f.error_messages
 
-  p.flex.flex-col
-    = f.label :name, "Nome"
-    = f.text_field :name
-  p.flex.flex-col
-    = f.label :category, "Categoria"
-    = f.select :category, Tag.categories.keys.to_a
-  p.flex.flex-col
-    = f.label :content, 'Conteúdo'
-    = f.rich_text_area :content
-
-  .actions = f.submit 'Salvar'
+  = f.text_field :name, label: 'Nome'
+  = f.select :category, Tag.categories.keys.to_a, label: 'Categoria'
+  = f.rich_text_area :content, label: 'Conteúdo'
+  = f.submit

@@ -1,50 +1,27 @@
-= form_for @asana do |f|
-  - if @asana.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@asana.errors.count, "error")} prohibited this asana from being saved:"
-      ul
-        - @asana.errors.full_messages.each do |message|
-          li = message
+= form_for @asana, builder: CustomFormBuilder do |f|
+  = f.error_messages
 
   = f.fields_for :exercise do |ff|
-    .field.w-full.flex.flex-col
-      = ff.label :name, 'Nome'
-      = ff.text_field :name
-  .field.w-full.flex.flex-col
-    = f.label :translation, 'Nome traduzido'
-    = f.text_field :translation
-  .field.w-full.flex.flex-col
-    = f.label :family_id, 'Família'
-    = f.collection_select :family_id, Family.all, :id, :name
-  .field.w-full.flex.flex-col
-    = f.label :content, 'Texto de introdução'
-    = f.rich_text_area :content
-  hr
-  h3 Ações
-  - {setup: 'Preparação', entering: 'Entrando na postura', legs: 'Pés e pernas', core: 'Coxa, pelve e abdômen', trunk: 'Costas, tronco e peito', arms: 'Ombros, braços e mãos', head: 'Pescoço e cabeça', all: 'Ações amplas', leaving: 'Saindo da postura' }.each do |key, value|
-    .field.w-full.flex.flex-col
-      = f.label key, value
-      = f.rich_text_area key
-  hr
-  h4 Conteúdo Avançado
-  - {advanced_actions: 'Ações avançadas', connections: 'Conexões'}.each do |key, value|
-    .field.w-full.flex.flex-col
-      = f.label key, value
-      = f.text_area key
-  hr
-  h4 Professores
-  .field.w-full.flex.flex-col
-    = f.label :observe, 'O que observar nos alunos'
-    = f.text_area :observe
-  hr
-  h4 Saúde
-  - {benefits: 'Benefícios', caution: 'Atenção', contraindications: 'Contra-indicações'}.each do |key, value|
-    .field.w-full.flex.flex-col
-      = f.label key, value
-      = f.text_area key
-  hr
-  .field.w-full.flex.flex-col
-    = f.label :curiosities, 'Curiosidades'
-    = f.rich_text_area :curiosities
+    = ff.text_field :name, label: 'Nome'
+  = f.text_field :translation, label: 'Nome traduzido'
+  = f.collection_select :family_id, Family.all, :id, :name, label: 'Família'
+  = f.rich_text_area :content, label: 'Texto de introdução'
 
-  .actions.mt-4 = f.submit 'Salvar'
+  h3.mt-8 Ações
+  - {setup: 'Preparação', entering: 'Entrando na postura', legs: 'Pés e pernas', core: 'Coxa, pelve e abdômen', trunk: 'Costas, tronco e peito', arms: 'Ombros, braços e mãos', head: 'Pescoço e cabeça', all: 'Ações amplas', leaving: 'Saindo da postura' }.each do |key, value|
+    = f.rich_text_area  key, label: value
+
+  h4.mt-4 Conteúdo Avançado
+  - {advanced_actions: 'Ações avançadas', connections: 'Conexões'}.each do |key, value|
+    = f.text_area  key, label: value
+
+  h4.mt-4 Professores
+  = f.text_area :observe, label: 'O que observar nos alunos'
+
+  h4.mt-4 Saúde
+  - {benefits: 'Benefícios', caution: 'Atenção', contraindications: 'Contra-indicações'}.each do |key, value|
+    = f.text_area  key, label: value
+
+  .mt-8 = f.rich_text_area :curiosities, label: 'Curiosidades'
+
+  = f.submit

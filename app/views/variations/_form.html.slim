@@ -1,24 +1,11 @@
-= form_for @variation do |f|
-  - if @variation.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@variation.errors.count, "error")} prohibited this variation from being saved:"
-      ul
-        - @variation.errors.full_messages.each do |message|
-          li = message
+= form_for @variation, builder: CustomFormBuilder do |f|
+  = f.error_messages
 
   = f.fields_for :exercise do |ff|
-    .field.w-full.flex.flex-col
-      = ff.label :name, 'Título'
-      = ff.text_field :name, value: @variation.name
-  .field.w-full.flex.flex-col
-    = f.label :asana_id, 'Asana original'
-    = f.collection_select :asana_id, Asana.all, :id, :name
-  .field.w-full.flex.flex-col
-    = f.label :tagline, 'Descrição curta'
-    = f.text_area :tagline
-  .field.w-full.flex.flex-col
-    = f.label :content, 'Conteúdo'
-    = f.rich_text_area :content
+    = ff.text_field :name, label: 'Título', value: @variation.name
+  = f.collection_select :asana_id, label: 'Asana original', Asana.all, :id, :name
+  = f.text_area :tagline, label: 'Descrição curta'
+  = f.rich_text_area :content, label: 'Conteúdo'
 
   = hidden_field_tag "variation[tag_ids][]", nil
   - Tag.all.each do |tag|
@@ -27,4 +14,4 @@
       |  &nbsp;
       = label_tag dom_id(tag), tag.name, class: "cursor-pointer"
 
-  .actions.mt-4 = f.submit 'Salvar'
+  = f.submit
