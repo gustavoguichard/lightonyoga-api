@@ -1,0 +1,9 @@
+.flex.flex-grow.items-center.justify-center
+  .flex.flex-col.w-full.sm:w-2/3.md:w-1/2.py-6.px-8.mb-12.bg-gray-200.border-2.border-gray-300.rounded-lg
+    h3.text-center.-mt-4.mb-3 Faça o Log in
+    = form_tag :sessions do |f|
+      p.flex.flex-col
+        strong Senha:
+        = password_field_tag :password, {}, autofocus: true
+        = submit_tag 'Entrar'
+

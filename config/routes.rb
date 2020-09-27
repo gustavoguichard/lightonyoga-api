@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  root to: 'static#index'
+
+  get 'login', to: 'sessions#log_in'
+  delete :sessions, to: 'sessions#destroy'
+  resources :sessions, only: %i[create]
+
   resources :asanas
   resources :variations
-  root to: 'static#index'
   resources :families
   resources :words
   resources :tags
   resources :movements
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

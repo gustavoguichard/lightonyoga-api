@@ -16,3 +16,6 @@ html
         = link_to 'Admin', root_path
         |  &middot; Light on Yoga App &middot; &copy;&nbsp;
         = Date.today.year
+        - if logged_in
+          |  &middot;&nbsp;
+          = link_to 'Sair', sessions_path, method: :delete
