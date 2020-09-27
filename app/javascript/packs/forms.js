@@ -7,4 +7,4 @@ const loadChoices = () => {
   })
 }
 
-$(document).ready(loadChoices)
+$(document).on('turbolinks:load', loadChoices)

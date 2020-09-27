@@ -10,19 +10,13 @@ p#notice = notice
   - if @asana.image
     = image_tag @asana.image, width: 200, class: 'mr-4'
   div
-    strong.sm:mr-2 Link:
+    strong.mr-2 Link:
     = link_to @asana.slug, "https://lightonyoga.com.br/asana/#{@asana.slug}"
     br
-    strong.sm:mr-2 Família:
+    strong.mr-2 Família:
     = @asana.family.name
-    - if @asana.words.any?
-      br
-      strong.sm:mr-2 Tradução:
-      = @asana.words.map{|w| "#{w.name} = #{w.translation}" }.join(', ')
-    - if @asana.movements.any?
-      br
-      strong.sm:mr-2 Principais movimentos articulares:
-      = @asana.movements.pluck(:name).join(', ')
+    = list_relations @asana.words.map{|w| "#{w.name} = #{w.translation}" }, 'Tradução'
+    = list_relations @asana.movements.pluck(:name), 'Principais movimentos articulares'
 
 = rich_content "Introdução", @asana.content
 

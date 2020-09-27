@@ -1,6 +1,7 @@
 class Variation < ApplicationRecord
-  include Taggable
   include Exercisable
+  include Slugable
+  include Taggable
 
   belongs_to :asana
 
