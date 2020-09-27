@@ -5,8 +5,5 @@ class Exercise < ApplicationRecord
 
   belongs_to :content, polymorphic: true, dependent: :destroy
 
-  # has_many :taggins, as: :taggable
-  # has_many :tags, through :taggins
-
   has_rich_text :description
 end
