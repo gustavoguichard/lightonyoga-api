@@ -8,10 +8,13 @@ table
   thead
     tr
       th Nome
-      th.w-20
+      th Ações
 
   tbody
     - @asanas.each do |asana|
       tr
         td = link_to "#{asana.name} - #{asana.family.name}", edit_asana_path(asana)
-        td = link_to 'Excluir', asana, data: { confirm: 'Tem certeza?' }, method: :delete
+        td
+          = link_to 'Ver', asana
+          |  |&nbsp;
+          = link_to 'Excluir', asana, data: { confirm: 'Tem certeza?' }, method: :delete

@@ -1,36 +1,48 @@
+header
+  h1
+    = @asana.name
+    br
+    small.text-gray-600 = @asana.translation
+
 p#notice = notice
 
 p
-  strong Name:
-  = @asana.name
-p
-  strong Slug:
-  = @asana.slug
-p
-  strong Translation:
-  = @asana.translation
-p
-  strong Family:
-  = @asana.family
-p
-  strong Advanced actions:
-  = @asana.advanced_actions
-p
-  strong Connections:
-  = @asana.connections
-p
-  strong Observe:
-  = @asana.observe
-p
-  strong Benefits:
-  = @asana.benefits
-p
-  strong Caution:
-  = @asana.caution
-p
-  strong Contraindications:
-  = @asana.contraindications
+  strong.mr-2 Link:
+  = link_to @asana.slug, "https://lightonyoga.com.br/asana/#{@asana.slug}"
+  br
+  strong.mr-2 Família:
+  = @asana.family.name
 
-=> link_to 'Edit', edit_asana_path(@asana)
-'|
-=< link_to 'Back', asanas_path
+
+= rich_content "Introdução", @asana.content
+
+.my-8
+  h2 Ações
+  = rich_content "Preparação", @asana.setup
+  = rich_content "Entrando na postura", @asana.entering
+  = rich_content "Pés e pernas", @asana.legs
+  = rich_content "Coxa, pelve e abdômen", @asana.core
+  = rich_content "Costas, tronco e peito", @asana.trunk
+  = rich_content "Ombros, braços e mãos", @asana.arms
+  = rich_content "Pescoço e cabeça", @asana.head
+  = rich_content "Ações amplas", @asana.all
+  = rich_content "Saindo da postura", @asana.leaving
+
+h2.mt-8 Saúde da postura
+= multiline_content "Benefícios", @asana.benefits
+= multiline_content "Cuidados", @asana.caution
+= multiline_content "Contra-indicações", @asana.contraindications
+
+h2.mt-8 Avançado
+= multiline_content "Ações avançadas", @asana.advanced_actions
+= multiline_content "Conexões", @asana.connections
+
+h2.mt-8 Professores
+= multiline_content "O que é importante observar no aluno", @asana.observe
+
+= rich_content "Curiosidades", @asana.curiosities
+
+.mt-8
+  = link_to 'Editar', edit_asana_path(@asana)
+  |  |&nbsp;
+  = link_to 'Voltar', asanas_path

@@ -1,6 +1,15 @@
-p#notice = notice
+header
+  h1
+    = link_to @variation.asana.name, @variation.asana
+    br
+    small.text-gray-600 = @variation.name
 
+article
+  h3 Chamada
+  p.text-lg = @variation.tagline
+  = rich_content "Instruções", @variation.content
 
-=> link_to 'Edit', edit_variation_path(@variation)
-'|
-=< link_to 'Back', variations_path
+.mt-8
+  = link_to 'Editar', edit_variation_path(@variation)
+  |  |&nbsp;
+  = link_to 'Voltar', variations_path

@@ -30,7 +30,7 @@ class VariationsController < ApplicationController
 
     respond_to do |format|
       if @variation.save
-        format.html { redirect_to variations_path, notice: 'Variation was successfully created.' }
+        format.html { redirect_to @variation, notice: 'Variation was successfully created.' }
         format.json { render :show, status: :created, location: @variation }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class VariationsController < ApplicationController
   def update
     respond_to do |format|
       if @variation.update(variation_params)
-        format.html { redirect_to variations_path, notice: 'Variation was successfully updated.' }
+        format.html { redirect_to @variation, notice: 'Variation was successfully updated.' }
         format.json { render :show, status: :ok, location: @variation }
       else
         format.html { render :edit }

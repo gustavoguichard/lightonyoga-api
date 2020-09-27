@@ -8,10 +8,13 @@ table
   thead
     tr
       th Nome
-      th.w-20
+      th Ações
 
   tbody
     - @variations.each do |variation|
       tr
         td = link_to "#{variation.asana.name}: #{variation.name}", edit_variation_path(variation)
-        td = link_to 'Excluir', variation, data: { confirm: 'Tem certeza?' }, method: :delete
+        td
+          = link_to 'Ver', variation
+          |  |&nbsp;
+          = link_to 'Excluir', variation, data: { confirm: 'Tem certeza?' }, method: :delete

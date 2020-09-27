@@ -30,7 +30,7 @@ class AsanasController < ApplicationController
 
     respond_to do |format|
       if @asana.save
-        format.html { redirect_to asanas_path, notice: 'Asana was successfully created.' }
+        format.html { redirect_to @asana, notice: 'Asana was successfully created.' }
         format.json { render :show, status: :created, location: @asana }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class AsanasController < ApplicationController
   def update
     respond_to do |format|
       if @asana.update(asana_params)
-        format.html { redirect_to asanas_path, notice: 'Asana was successfully updated.' }
+        format.html { redirect_to @asana, notice: 'Asana was successfully updated.' }
         format.json { render :show, status: :ok, location: @asana }
       else
         format.html { render :edit }
