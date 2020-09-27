@@ -1,0 +1,23 @@
+= form_for @variation do |f|
+  - if @variation.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@variation.errors.count, "error")} prohibited this variation from being saved:"
+      ul
+        - @variation.errors.full_messages.each do |message|
+          li = message
+
+  = f.fields_for :exercise do |ff|
+    .field.w-full.flex.flex-col
+      = ff.label :name, 'Título'
+      = ff.text_field :name, value: @variation.name
+  .field.w-full.flex.flex-col
+    = f.label :asana_id, 'Asana original'
+    = f.collection_select :asana_id, Asana.all, :id, :name
+  .field.w-full.flex.flex-col
+    = f.label :tagline, 'Descrição curta'
+    = f.text_area :tagline
+  .field.w-full.flex.flex-col
+    = f.label :content, 'Conteúdo'
+    = f.rich_text_area :content
+
+  .actions.mt-4 = f.submit 'Salvar'

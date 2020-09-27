@@ -1,0 +1,17 @@
+header
+  h1 Todas as Variações
+
+.text-right.mb-2
+  = link_to 'Nova Variação', new_variation_path
+
+table
+  thead
+    tr
+      th Nome
+      th.w-20
+
+  tbody
+    - @variations.each do |variation|
+      tr
+        td = link_to "#{variation.asana.name}: #{variation.name}", edit_variation_path(variation)
+        td = link_to 'Excluir', variation, data: { confirm: 'Tem certeza?' }, method: :delete

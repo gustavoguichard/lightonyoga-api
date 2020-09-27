@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   resources :asanas
+  resources :variations
   root to: 'static#index'
   resources :families
   resources :words
