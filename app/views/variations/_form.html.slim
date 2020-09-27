@@ -1,17 +1,10 @@
 = form_for @variation, builder: CustomFormBuilder do |f|
   = f.error_messages
 
+  = f.collection_select :tag_ids, Tag.all, :id, :name, {}, label: 'Tags', multiple: true, data: { choices: true }
   = f.fields_for :exercise do |ff|
     = ff.text_field :name, label: 'Título', value: @variation.name
-  = f.collection_select :asana_id, label: 'Asana original', Asana.all, :id, :name
+  = f.collection_select :asana_id, Asana.all, :id, :name, label: 'Asana original'
   = f.text_area :tagline, label: 'Descrição curta'
   = f.rich_text_area :content, label: 'Conteúdo'
-
-  = hidden_field_tag "variation[tag_ids][]", nil
-  - Tag.all.each do |tag|
-    .field.w-full.flex.items-baseline
-      = check_box_tag "variation[tag_ids][]", tag.id, @variation.tag_ids.include?(tag.id), id: dom_id(tag)
-      |  &nbsp;
-      = label_tag dom_id(tag), tag.name, class: "cursor-pointer"
-
   = f.submit
