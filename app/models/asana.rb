@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Asana < ApplicationRecord
-  include Slugable
+  include Taggable
 
   belongs_to :family
 

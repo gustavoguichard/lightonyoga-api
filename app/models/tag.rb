@@ -7,12 +7,7 @@ class Tag < ApplicationRecord
 
   enum category: { level: 1, prop: 2, health: 3, study: 4 }
 
-  # has_many asanas, through: :taggins
-  # has_many variations, through: :taggins
-  # has_many sequences, through: :taggins
-
-
-  # TAGGIN
-  # belongs_to :tag
-  # belongs_to :taggable, polymorphic: true
+  has_many :taggings, dependent: :destroy
+  has_many :asanas, through: :taggings, source: :taggable, source_type: 'Asana'
+  has_many :variations, through: :taggings, source: :taggable, source_type: 'Variation'
 end

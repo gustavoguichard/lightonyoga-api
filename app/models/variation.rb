@@ -1,4 +1,6 @@
 class Variation < ApplicationRecord
+  include Taggable
+
   belongs_to :asana
   has_one :exercise, as: :content, dependent: :destroy
 
