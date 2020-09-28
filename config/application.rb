@@ -21,7 +21,7 @@ require 'sprockets/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-Dotenv::Railtie.load unless Module.const_get('Dotenv').nil?
+Dotenv::Railtie.load if Module.const_defined? 'Dotenv'
 
 module LightonyogaApi
   class Application < Rails::Application
