@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
   resources :asanas
   resources :variations
-  resources :families, except: %i[show]
-  resources :words, except: %i[show]
-  resources :tags, except: %i[show]
-  resources :movements, except: %i[show]
+  resources :families
+  resources :words
+  resources :tags
+  resources :movements
 end
