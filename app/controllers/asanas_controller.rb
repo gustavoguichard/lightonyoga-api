@@ -30,7 +30,7 @@ class AsanasController < ApplicationController
 
     respond_to do |format|
       if @asana.save
-        format.html { redirect_to @asana, notice: 'Asana was successfully created.' }
+        format.html { redirect_to @asana, notice: 'Asana criado com sucesso.' }
         format.json { render :show, status: :created, location: @asana }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class AsanasController < ApplicationController
   def update
     respond_to do |format|
       if @asana.update(asana_params)
-        format.html { redirect_to @asana, notice: 'Asana was successfully updated.' }
+        format.html { redirect_to @asana, notice: 'Asana atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @asana }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class AsanasController < ApplicationController
   def destroy
     @asana.destroy
     respond_to do |format|
-      format.html { redirect_to asanas_url, notice: 'Asana was successfully destroyed.' }
+      format.html { redirect_to asanas_url, notice: 'Asana excluído com sucesso.' }
       format.json { head :no_content }
     end
   end

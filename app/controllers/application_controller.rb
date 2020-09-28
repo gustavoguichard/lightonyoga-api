@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   private
 
   def authorize
-    redirect_to login_url, notice: 'Please log in' unless logged_in
+    redirect_to login_url, notice: 'Por favor faça seu login' unless logged_in
   end
 end

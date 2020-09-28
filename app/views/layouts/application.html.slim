@@ -9,6 +9,8 @@ html
     = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body.flex.flex-col.min-h-screen
+    - if notice
+      #notice.fixed.py-3.top-0.left-0.right-0.text-center.text-yellow-900.font-semibold.bg-yellow-200 = notice
     .flex.flex-col.flex-grow
       = yield
     footer.flex.justify-center

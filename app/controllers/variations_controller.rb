@@ -30,7 +30,7 @@ class VariationsController < ApplicationController
 
     respond_to do |format|
       if @variation.save
-        format.html { redirect_to @variation, notice: 'Variation was successfully created.' }
+        format.html { redirect_to @variation, notice: 'Variação criada com sucesso.' }
         format.json { render :show, status: :created, location: @variation }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class VariationsController < ApplicationController
   def update
     respond_to do |format|
       if @variation.update(variation_params)
-        format.html { redirect_to @variation, notice: 'Variation was successfully updated.' }
+        format.html { redirect_to @variation, notice: 'Variação atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @variation }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class VariationsController < ApplicationController
   def destroy
     @variation.destroy
     respond_to do |format|
-      format.html { redirect_to variations_url, notice: 'Variation was successfully destroyed.' }
+      format.html { redirect_to variations_url, notice: 'Variação excluida com sucesso'}
       format.json { head :no_content }
     end
   end

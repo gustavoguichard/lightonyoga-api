@@ -8,14 +8,14 @@ class SessionsController < ApplicationController
   def create
     if params[:password] == ENV['PASSWORD']
       session[:user] = true
-      redirect_to root_path, notice: 'Successfully logged in'
+      redirect_to root_path, notice: 'Login feito com sucesso.'
     else
-      redirect_to login_path, notice: 'Wrong password'
+      redirect_to login_path, notice: 'Senha incorreta.'
     end
   end
 
   def destroy
     session[:user] = nil
-    redirect_to root_path
+    redirect_to root_path, notice: 'Logout feito com sucesso.'
   end
 end
