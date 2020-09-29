@@ -92,7 +92,7 @@ class AsanasController < ApplicationController
       :all,
       :leaving,
       :curiosities,
-      exercise_attributes: %i[id name image],
+      exercise_attributes: %i[id name alternative_names image],
       movement_ids: [],
       word_ids: [],
     )

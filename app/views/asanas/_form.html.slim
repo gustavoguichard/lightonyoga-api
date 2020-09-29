@@ -3,6 +3,7 @@
 
   = f.fields_for :exercise do |ff|
     = ff.text_field :name, label: 'Nome'
+    = ff.text_field :alternative_names, label: 'Nomes alternativos'
   = f.text_field :translation, label: 'Nome traduzido'
   = f.collection_select :family_id, Family.all, :id, :name, label: 'Família'
   = f.fields_for :exercise do |ff|
