@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-json.extract! @asana, :id, :name, :translation, :image, :content, :setup, :entering, :legs, :core, :trunk, :arms, :head, :all, :leaving, :curiosities, :advanced_actions, :connections, :observe, :benefits, :caution, :contraindications, :updated_at
+json.extract! @asana, :id, :name, :alternative_names, :translation, :image, :content, :setup, :entering, :legs, :core, :trunk, :arms, :head, :all, :leaving, :curiosities, :advanced_actions, :connections, :observe, :benefits, :caution, :contraindications, :updated_at
 json.words @asana.words do |word|
   json.id word.id
   json.name word.name
