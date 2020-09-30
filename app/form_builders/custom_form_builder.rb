@@ -20,10 +20,10 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
   def error_messages
     return unless object.errors.full_messages.any?
 
-    content_tag(:div, id: 'error_explanation') do
+    content_tag(:div, class: 'text-red-600', id: 'error_explanation') do
       content_tag(:h2, 'Formulário não pode ser salvo:') +
-        content_tag(:ul) do
-          object.errors.full_messages.each do |message|
+        content_tag(:ul, class: 'list-disc') do
+          object.errors.full_messages.map do |message|
             content_tag(:li, message)
           end.join.html_safe
         end
