@@ -65,7 +65,10 @@ class FamiliesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_family
-    @family = Family.find(params[:id])
+    resource = Family.find_by(slug: params[:slug])
+    raise ActiveRecord::RecordNotFound unless resource
+
+    @family ||= resource
   end
 
   # Only allow a list of trusted parameters through.

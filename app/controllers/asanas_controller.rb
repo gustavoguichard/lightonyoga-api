@@ -67,7 +67,10 @@ class AsanasController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_asana
-    @asana = Asana.find(params[:id])
+    exercise = Exercise.find_by(slug: params[:slug])
+    raise ActiveRecord::RecordNotFound unless exercise
+
+    @asana ||= exercise&.content
   end
 
   # Only allow a list of trusted parameters through.

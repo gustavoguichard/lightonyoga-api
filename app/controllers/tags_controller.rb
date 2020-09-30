@@ -65,7 +65,10 @@ class TagsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_tag
-    @tag = Tag.find(params[:id])
+    resource = Tag.find_by(slug: params[:slug])
+    raise ActiveRecord::RecordNotFound unless resource
+
+    @tag ||= resource
   end
 
   # Only allow a list of trusted parameters through.

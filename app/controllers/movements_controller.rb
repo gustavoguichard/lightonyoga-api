@@ -65,7 +65,10 @@ class MovementsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_movement
-    @movement = Movement.find(params[:id])
+    resource = Movement.find_by(slug: params[:slug])
+    raise ActiveRecord::RecordNotFound unless resource
+
+    @movement ||= resource
   end
 
   # Only allow a list of trusted parameters through.

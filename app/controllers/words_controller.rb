@@ -65,7 +65,10 @@ class WordsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_word
-    @word = Word.find(params[:id])
+    resource = Word.find_by(slug: params[:slug])
+    raise ActiveRecord::RecordNotFound unless resource
+
+    @word ||= resource
   end
 
   # Only allow a list of trusted parameters through.

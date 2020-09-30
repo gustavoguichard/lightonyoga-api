@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   delete :sessions, to: 'sessions#destroy'
   resources :sessions, only: %i[create]
 
-  resources :asanas
-  resources :variations
-  resources :families
-  resources :words
-  resources :tags
+  resources :asanas, param: :slug
+  resources :variations, param: :slug
+  resources :families, param: :slug
+  resources :words, param: :slug
+  resources :tags, param: :slug
   resources :exercise_relations, except: %i[show]
-  resources :movements
+  resources :movements, param: :slug
 end
