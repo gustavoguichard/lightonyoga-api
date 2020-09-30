@@ -1,0 +1,21 @@
+header
+  h1 Todas as Relações
+
+.text-right.mb-2
+  = link_to 'Nova Relação', new_exercise_relation_path
+
+table
+  thead
+    tr
+      th Nome
+      th Tipo
+      th Ações
+
+  tbody
+    - @exercise_relations.each do |er|
+      tr
+        td = link_to er.name, edit_exercise_relation_path(er)
+        td
+          = er.category.humanize
+        td
+          = link_to 'Excluir', er, data: { confirm: 'Tem certeza?' }, method: :delete

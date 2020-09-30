@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   resources :families
   resources :words
   resources :tags
+  resources :exercise_relations, except: %i[show]
   resources :movements
 end

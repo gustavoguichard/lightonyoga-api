@@ -1,0 +1,9 @@
+= form_for @exercise_relation, builder: CustomFormBuilder do |f|
+  = f.error_messages
+
+  = f.collection_select :relatable_id, Exercise.all, :id, :full_name, { include_blank: true }, label: 'Original',data: { choices: true }
+  = f.collection_select :related_id, Exercise.all, :id, :full_name, { include_blank: true }, label: 'Relacionado', data: { choices: true }
+  = f.text_field :comment, label: 'Comentário'
+  = f.collection_select :category, ExerciseRelation.categories, :first, :first, label: 'Tipo de relação'
+
+  = f.submit
