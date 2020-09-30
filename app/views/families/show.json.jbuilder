@@ -1,10 +1,6 @@
-json.extract! @family, :id, :name, :translation
+json.extract! @family, :id, :name, :translation, :slug
+json.content @family.content&.body
 json.asanas @family.asanas do |asana|
-  json.id asana.id
-  json.name asana.name
-  json.image asana.image
-  json.slug asana.to_param
-  json.translation asana.translation
+  json.extract! asana, :id, :name, :image, :slug, :translation
 end
-json.slug @family.to_param
 json.url family_url(@family, format: :json)

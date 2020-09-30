@@ -1,50 +1,39 @@
 # frozen_string_literal: true
 
-json.extract! @asana, :id, :name, :alternative_names, :translation, :image, :content, :setup, :entering, :legs, :core, :trunk, :arms, :head, :all, :leaving, :curiosities, :advanced_actions, :connections, :observe, :benefits, :caution, :contraindications, :updated_at
+json.extract! @asana, :id, :slug, :name, :alternative_names, :translation, :image, :advanced_actions, :connections, :observe, :benefits, :caution, :contraindications, :updated_at
+json.content @asana.content&.body
+json.setup @asana.setup&.body
+json.entering @asana.entering&.body
+json.legs @asana.legs&.body
+json.core @asana.core&.body
+json.trunk @asana.trunk&.body
+json.arms @asana.arms&.body
+json.head @asana.head&.body
+json.all @asana.all&.body
+json.leaving @asana.leaving&.body
+json.curiosities @asana.curiosities&.body
 json.words @asana.words do |word|
-  json.id word.id
-  json.name word.name
-  json.slug word.to_param
-  json.translation word.translation
+  json.extract! word, :id, :name, :slug, :translation
 end
 json.movements @asana.movements do |movement|
-  json.id movement.id
-  json.name movement.name
-  json.slug movement.to_param
+  json.extract! movement, :id, :name, :slug
 end
 json.variations @asana.variations do |variation|
-  json.id variation.id
-  json.name variation.name
-  json.image variation.image
-  json.tagline variation.tagline
+  json.extract! variation, :id, :name, :image, :slug, :tagline
   json.tags variation.tags do |tag|
-    json.id tag.id
-    json.name tag.name
-    json.category tag.category
-    json.slug tag.to_param
+    json.extract! tag, :id, :name, :category, :slug
   end
-  json.slug variation.to_param
   json.asana do
-    json.id variation.asana.id
-    json.name variation.asana.name
-    json.slug variation.asana.to_param
+    json.extract! variation.asana, :id, :name, :slug
   end
 end
 json.relateds @asana.exercise.related_relations do |relation|
-  json.id relation.related.content.id
-  json.name relation.related.name
-  json.full_name relation.related.full_name
-  json.slug relation.related.content.to_param
-  json.parent_slug relation.related.content_type == 'Variation' ? relation.related.content.asana.to_param : nil
-  json.image relation.related.image
-  json.comment relation.comment
-  json.category relation.category
+  json.extract! relation.related.content, :id, :slug
+  json.extract! relation.related, :name, :full_name, :image
+  json.extract! relation, :comment, :category
+  json.parent_slug relation.related.content_type == 'Variation' ? relation.related.content.asana.slug : nil
 end
 json.family do
-  json.id @asana.family.id
-  json.name @asana.family.name
-  json.slug @asana.family.to_param
-  json.translation @asana.family.translation
+  json.extract! @asana.family, :id, :name, :slug, :translation
 end
-json.slug @asana.to_param
 json.url asana_url(@asana, format: :json)

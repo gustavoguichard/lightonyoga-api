@@ -1,24 +1,15 @@
-json.extract! @variation, :id, :name, :slug, :image, :tagline, :content, :updated_at
+json.extract! @variation, :id, :name, :slug, :image, :tagline, :updated_at
+json.content @variation.content&.body
 json.asana do
-  json.id @variation.asana.id
-  json.name @variation.asana.name
-  json.image @variation.asana.image
-  json.slug @variation.asana.to_param
+  json.extract! @variation.asana, :id, :name, :slug, :image
 end
 json.relateds @variation.exercise.related_relations do |relation|
-  json.id relation.related.content.id
-  json.name relation.related.name
-  json.full_name relation.related.full_name
-  json.slug relation.related.content.to_param
-  json.parent_slug relation.related.content_type == 'Variation' ? relation.related.content.asana.to_param : nil
-  json.image relation.related.image
-  json.comment relation.comment
-  json.category relation.category
+  json.extract! relation.related.content, :id, :slug
+  json.extract! relation.related, :name, :full_name, :image
+  json.extract! relation, :comment, :category
+  json.parent_slug relation.related.content_type == 'Variation' ? relation.related.content.asana.slug : nil
 end
 json.tags @variation.tags do |tag|
-  json.id tag.id
-  json.name tag.name
-  json.category tag.category
-  json.slug tag.to_param
+  json.extract! tag, :id, :name, :category, :slug
 end
 json.url variation_url(@variation, format: :json)

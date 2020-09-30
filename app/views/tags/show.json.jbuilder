@@ -1,16 +1,10 @@
-json.extract! @tag, :id, :name, :category, :content
-json.slug @tag.to_param
+json.extract! @tag, :id, :slug, :name, :category
+json.content @tag.content&.body
 json.variations @tag.variations do |variation|
-  json.id variation.id
-  json.name variation.name
-  json.image variation.image
-  json.tagline variation.tagline
+  json.extract! variation, :id, :name, :image, :tagline, :slug
   json.tags variation.tag_ids
-  json.slug variation.to_param
   json.asana do
-    json.id variation.asana.id
-    json.name variation.asana.name
-    json.slug variation.asana.to_param
+    json.extract! variation.asana, :id, :name, :slug
   end
 end
 json.url tag_url(@tag, format: :json)

@@ -10,7 +10,7 @@ article
       span.mr-1.mb-2.py-1.px-2.text-sm.bg-blue-600.rounded.text-white
         = tag.name
   p
-    = link_to "Ver no website", "https://lightonyoga.com.br/asana/#{@variation.asana.to_param}/#{@variation.to_param}"
+    = link_to "Ver no website", "https://lightonyoga.com.br/asana/#{@variation.asana.slug}/#{@variation.slug}"
   - if @variation.image
     = image_tag @variation.image, width: 200, class: 'mr-4'
   h3 Chamada

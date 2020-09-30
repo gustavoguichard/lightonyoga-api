@@ -8,7 +8,7 @@ header
   - if @asana.image
     = image_tag @asana.image, width: 200, class: 'mr-4'
   div
-    = link_to "Ver no website", "https://lightonyoga.com.br/asana/#{@asana.to_param}"
+    = link_to "Ver no website", "https://lightonyoga.com.br/asana/#{@asana.slug}"
     br
     -if @asana.alternative_names.present?
       strong.mr-2 Nomes alternativos:
