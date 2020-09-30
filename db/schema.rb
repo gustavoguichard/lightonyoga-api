@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_29_204818) do
+ActiveRecord::Schema.define(version: 2020_09_29_230411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,15 @@ ActiveRecord::Schema.define(version: 2020_09_29_204818) do
     t.bigint "word_id", null: false
     t.index ["asana_id"], name: "index_asanas_words_on_asana_id"
     t.index ["word_id"], name: "index_asanas_words_on_word_id"
+  end
+
+  create_table "exercise_relations", force: :cascade do |t|
+    t.bigint "relatable_id", null: false
+    t.bigint "related_id", null: false
+    t.integer "category", default: 0, null: false
+    t.string "comment"
+    t.index ["relatable_id"], name: "index_exercise_relations_on_relatable_id"
+    t.index ["related_id"], name: "index_exercise_relations_on_related_id"
   end
 
   create_table "exercises", force: :cascade do |t|
@@ -141,6 +150,8 @@ ActiveRecord::Schema.define(version: 2020_09_29_204818) do
   add_foreign_key "asanas_movements", "movements"
   add_foreign_key "asanas_words", "asanas"
   add_foreign_key "asanas_words", "words"
+  add_foreign_key "exercise_relations", "exercises", column: "relatable_id"
+  add_foreign_key "exercise_relations", "exercises", column: "related_id"
   add_foreign_key "taggings", "tags"
   add_foreign_key "variations", "asanas"
 end
