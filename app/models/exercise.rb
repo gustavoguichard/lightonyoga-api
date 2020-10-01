@@ -15,6 +15,10 @@ class Exercise < ApplicationRecord
 
   accepts_nested_attributes_for :related_relations
 
+  def picture
+    image.present? ? image : 'https://www.linkpicture.com/q/default-asana.png'
+  end
+
   def full_name
     return name unless content_type == 'Variation'
 

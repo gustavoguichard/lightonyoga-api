@@ -1,7 +1,7 @@
 json.extract! @tag, :id, :slug, :name, :category
 json.content @tag.content&.body
 json.variations @tag.variations do |variation|
-  json.extract! variation, :id, :name, :image, :tagline, :slug
+  json.extract! variation, :id, :name, :picture, :tagline, :slug
   json.tags variation.tag_ids
   json.asana do
     json.extract! variation.asana, :id, :name, :slug

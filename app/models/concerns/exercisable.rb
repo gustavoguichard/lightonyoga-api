@@ -6,7 +6,7 @@ module Exercisable
   included do
     has_one :exercise, as: :content, dependent: :destroy
 
-    delegate :name, :name=, :alternative_names, :slug, :slug=, :image, to: :exercise
+    delegate :name, :name=, :alternative_names, :slug, :slug=, :picture, :image, to: :exercise
 
     accepts_nested_attributes_for :exercise
   end
