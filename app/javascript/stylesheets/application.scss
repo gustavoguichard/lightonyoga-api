@@ -2,9 +2,8 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 
-/*! purgecss start ignore */
 @import './new';
 @import './choices';
-/*! purgecss end ignore */
+// You can add your own custom components/styles here
 
 @import 'tailwindcss/utilities';
