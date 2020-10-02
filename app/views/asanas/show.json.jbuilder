@@ -19,7 +19,8 @@ json.movements @asana.movements do |movement|
   json.extract! movement, :id, :name, :slug
 end
 json.variations @asana.variations do |variation|
-  json.extract! variation, :id, :name, :picture, :slug, :tagline
+  json.extract! variation, :id, :name, :picture, :tagline
+  json.slug variation.to_param
   json.tags variation.tags do |tag|
     json.extract! tag, :id, :name, :category, :slug
   end
@@ -28,10 +29,10 @@ json.variations @asana.variations do |variation|
   end
 end
 json.relateds @asana.exercise.related_relations do |relation|
-  json.extract! relation.related.content, :id, :slug
-  json.extract! relation.related, :name, :full_name, :picture
+  json.extract! relation.related.content, :id
+  json.extract! relation.related, :name, :parent_slug, :full_name, :picture
   json.extract! relation, :comment, :category
-  json.parent_slug relation.related.content_type == 'Variation' ? relation.related.content.asana.slug : nil
+  json.slug relation.related.full_slug
 end
 json.family do
   json.extract! @asana.family, :id, :name, :slug, :translation

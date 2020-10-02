@@ -19,9 +19,23 @@ class Exercise < ApplicationRecord
     image.present? ? image : 'https://www.linkpicture.com/q/default-asana.png'
   end
 
+  def variation?
+    content_type == 'Variation'
+  end
+
+  def full_slug
+    variation? ? content.to_param : slug
+  end
+
   def full_name
-    return name unless content_type == 'Variation'
+    return name unless variation?
 
     "#{content.asana.name} - #{name}"
+  end
+
+  def parent_slug
+    return unless variation?
+
+    content.asana.slug
   end
 end

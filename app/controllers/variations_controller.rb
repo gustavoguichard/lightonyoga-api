@@ -67,10 +67,7 @@ class VariationsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_variation
-    exercise = Exercise.find_by(slug: params[:slug])
-    raise ActiveRecord::RecordNotFound unless exercise
-
-    @variation ||= exercise&.content
+    @variation ||= Variation.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :sessions, only: %i[create]
 
   resources :asanas, param: :slug
-  resources :variations, param: :slug
+  resources :variations
   resources :families, param: :slug
   resources :words, param: :slug
   resources :tags, param: :slug

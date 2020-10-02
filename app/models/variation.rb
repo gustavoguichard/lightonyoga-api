@@ -6,4 +6,8 @@ class Variation < ApplicationRecord
   belongs_to :asana
 
   has_rich_text :content
+
+  def to_param
+    "#{id}-#{slug}"
+  end
 end
