@@ -16,7 +16,7 @@ class Exercise < ApplicationRecord
   accepts_nested_attributes_for :related_relations
 
   def picture
-    image.present? ? image : 'https://www.linkpicture.com/q/default-asana.png'
+    image.present? ? image : "https://firebasestorage.googleapis.com/v0/b/luznoyoga.appspot.com/o/postures%2Fempty.jpg?alt=media&token=#{ENV['FIREBASE_TOKEN']}"
   end
 
   def variation?
