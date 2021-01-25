@@ -6,7 +6,7 @@ class VariationsController < ApplicationController
   # GET /variations
   # GET /variations.json
   def index
-    @variations = Variation.joins(:exercise).merge(Exercise.order(:name)).order(:asana_id)
+    @variations = Variation.all
   end
 
   # GET /variations/1
